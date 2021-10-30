@@ -76,6 +76,11 @@
   display: flex;
   align-items: center;
 }
+.minus {
+  font-size: 20px;
+  width: 30px;
+  height: 30px;
+}
 .quantity-two {
   margin: 20px;
 }

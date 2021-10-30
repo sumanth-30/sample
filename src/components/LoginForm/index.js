@@ -25,7 +25,6 @@ class Login extends Component {
   }
 
   onSubmitFailure = errorMsg => {
-    console.log(errorMsg)
     this.setState({showSubmitError: true, errorMsg})
   }
 
@@ -51,15 +50,16 @@ class Login extends Component {
     const {username} = this.state
     return (
       <>
-        <label htmlFor="username" className="label">
+        <label className="input-label" htmlFor="username">
           USERNAME
         </label>
         <input
           type="text"
           id="username"
-          className="input-element"
+          className="username-input-field"
           value={username}
           onChange={this.onChangeUsername}
+          placeholder="Username"
         />
       </>
     )
@@ -69,15 +69,16 @@ class Login extends Component {
     const {password} = this.state
     return (
       <>
-        <label htmlFor="password" className="label">
+        <label className="input-label" htmlFor="password">
           PASSWORD
         </label>
         <input
           type="password"
           id="password"
-          className="input-element"
+          className="password-input-field"
           value={password}
           onChange={this.onChangePassword}
+          placeholder="Password"
         />
       </>
     )
@@ -87,7 +88,7 @@ class Login extends Component {
     const {showSubmitError, errorMsg} = this.state
     const jwtToken = Cookies.get('jwt_token')
     if (jwtToken !== undefined) {
-      return <Redirect to="/login" />
+      return <Redirect to="/" />
     }
     return (
       <div className="sign-in-container">
@@ -98,7 +99,7 @@ class Login extends Component {
               <div className="mobile-signIn-image-container">
                 <img
                   src="https://res.cloudinary.com/dihboy1cn/image/upload/v1635330828/mobile_login_img.jpg"
-                  alt="signIn-img"
+                  alt="website login"
                   className="mobile-signIn-image"
                 />
               </div>
@@ -107,7 +108,7 @@ class Login extends Component {
               <div className="desktop-sigIn-icon-container">
                 <img
                   src="https://res.cloudinary.com/dihboy1cn/image/upload/v1635241468/Frame_274_lu6taz.svg"
-                  alt="icon"
+                  alt="website logo"
                 />
                 <img
                   src="https://res.cloudinary.com/dppqkea7f/image/upload/v1625742726/Features_sy5c0d.svg"
@@ -127,7 +128,7 @@ class Login extends Component {
         <div className="desktop-signIn-image-container">
           <img
             src="https://res.cloudinary.com/dihboy1cn/image/upload/v1632644265/Login_img.png"
-            alt="img"
+            alt="website login"
             className="desktop-signIn-image"
           />
         </div>

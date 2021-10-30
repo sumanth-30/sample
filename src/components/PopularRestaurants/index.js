@@ -1,13 +1,9 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Link} from 'react-router-dom'
 import Loader from 'react-loader-spinner'
-import {
-  AiOutlinePlusSquare,
-  AiOutlineMinusSquare,
-  AiFillStar,
-} from 'react-icons/all'
+import {AiOutlineRightSquare, AiOutlineLeftSquare} from 'react-icons/all'
 import Restaurant from '../Restaurant'
+import RestaurantList from '../RestaurantList'
 
 import './index.css'
 
@@ -124,47 +120,21 @@ class PopularRestaurants extends Component {
 
         <div className="container-one ">
           {restaurantList.map(each => (
-            <Link to={`/restaurant/${each.id}`} className="link" key={each.id}>
-              <div className="restaurant-container">
-                <div>
-                  <img
-                    src={each.imageUrl}
-                    alt={each.name}
-                    className="restaurant-image"
-                  />
-                </div>
-                <div className="details">
-                  <div>
-                    <div className="res-name-container">
-                      <h1 className="name-res">{each.name}</h1>
-                    </div>
-                    <p className="type">{each.type}</p>
-                    <div className="align-rating">
-                      <p className="rating">
-                        <span style={{color: `#${each.color}`}}>
-                          <AiFillStar />
-                        </span>
-                        {each.rating}{' '}
-                        <span className="rate">
-                          ({each.totalReviews} rating)
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Link>
+            <RestaurantList testid="restaurant-item" each={each} />
           ))}
         </div>
         <div className="pagination">
-          <AiOutlineMinusSquare
+          <AiOutlineLeftSquare
+            testid="pagination-left-button"
             className="common"
             onClick={this.onClickLeftPage}
           />
           <p>
-            {activePage} of {pagination}
+            <span testid="active-page-number">{activePage}</span> of{' '}
+            {pagination}
           </p>
-          <AiOutlinePlusSquare
+          <AiOutlineRightSquare
+            testid="pagination-right-button"
             className="common"
             onClick={this.onClickRightPage}
           />
@@ -175,7 +145,13 @@ class PopularRestaurants extends Component {
 
   renderLoader = () => (
     <div className="loader">
-      <Loader type="Circles" color="#F7931E" height="50" width="50" />
+      <Loader
+        testid="restaurants-list-loader"
+        type="Circles"
+        color="#F7931E"
+        height="50"
+        width="50"
+      />
     </div>
   )
 

@@ -4,7 +4,7 @@ import Loader from 'react-loader-spinner'
 import {AiFillStar, BiRupee} from 'react-icons/all'
 import Footer from '../Footer'
 import Header from '../Header'
-import EachRestaurant from '../EachRestaurant'
+import EachFoodItem from '../EachFoodItem'
 
 import './index.css'
 
@@ -61,7 +61,11 @@ class RestaurantDetails extends Component {
         <div className="top-banner">
           <div className="top-details">
             <div>
-              <img src={restaurant.imageUrl} alt="main" className="res-image" />
+              <img
+                src={restaurant.imageUrl}
+                alt="restaurant"
+                className="res-image"
+              />
             </div>
             <div className="res-name">
               <h1 className="main-head-name">{restaurant.name}</h1>
@@ -90,7 +94,7 @@ class RestaurantDetails extends Component {
           </div>
         </div>
         <div className="container-fix">
-          <EachRestaurant foodItems={restaurant.foodItems} />
+          <EachFoodItem testid="foodItem" foodItems={restaurant.foodItems} />
         </div>
       </>
     )
@@ -98,7 +102,13 @@ class RestaurantDetails extends Component {
 
   renderLoader = () => (
     <div className="loader">
-      <Loader type="Circles" color="#F7931E" height="50" width="50" />
+      <Loader
+        testid="restaurant-details-loader"
+        type="Circles"
+        color="#F7931E"
+        height="50"
+        width="50"
+      />
     </div>
   )
 

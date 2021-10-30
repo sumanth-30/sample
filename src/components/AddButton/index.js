@@ -54,6 +54,7 @@ class AddButton extends Component {
         ) : (
           <div className="add-button-second">
             <button
+              testid="decrement-count"
               type="button"
               className="add-button-two"
               onClick={() => this.minusItemCart(foodItems)}
@@ -62,6 +63,7 @@ class AddButton extends Component {
             </button>
             <p>{itemNumber}</p>
             <button
+              testid="increment-count"
               type="button"
               className="add-button-two"
               onClick={() => this.addItemCart(foodItems)}

@@ -30,7 +30,7 @@ class Header extends Component {
           <div className="nav-content">
             <Link to="/" className="nav-link">
               <div className="home-and-logo">
-                <img src={logo} className="logo" alt="home" />
+                <img src={logo} className="logo" alt="website logo" />
                 <h1 className="head">Tasty Kitchens</h1>
               </div>
             </Link>
@@ -41,7 +41,7 @@ class Header extends Component {
                 </Link>
               </li>
               <li className="home">
-                <Link to="/Cart" className="nav-link-two">
+                <Link to="/cart" className="nav-link-two">
                   Cart
                 </Link>
               </li>

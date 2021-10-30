@@ -64,7 +64,13 @@ class Offers extends Component {
 
   renderLoadingView = () => (
     <div className="carousal">
-      <Loader type="Circles" color="#f7931e" height="50" width="50" />
+      <Loader
+        testid="restaurants-offers-loader"
+        type="Circles"
+        color="#f7931e"
+        height="50"
+        width="50"
+      />
     </div>
   )
 

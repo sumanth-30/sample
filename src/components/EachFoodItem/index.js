@@ -3,7 +3,7 @@ import AddButton from '../AddButton'
 
 import './index.css'
 
-const EachRestaurant = props => {
+const EachFoodItem = props => {
   const {foodItems} = props
 
   return (
@@ -12,11 +12,11 @@ const EachRestaurant = props => {
         <div key={each.id} style={{listStyle: 'none'}} className="list-view">
           <div className="view-list-container">
             <div>
-              <img src={each.image_url} alt="hoem" className="small-image" />
+              <img src={each.image_url} alt="home" className="small-image" />
             </div>
             <div className="view-container">
               <div>
-                <div className="item-namez">
+                <div className="item-names">
                   <h1 className="i-name">{each.name}</h1>
                 </div>
                 <div className="rupees">
@@ -29,6 +29,7 @@ const EachRestaurant = props => {
                 </div>
                 <div>
                   <AddButton
+                    testid="active-count"
                     foodItems={{
                       name: each.name,
                       cost: each.cost,
@@ -45,4 +46,4 @@ const EachRestaurant = props => {
   )
 }
 
-export default EachRestaurant
+export default EachFoodItem

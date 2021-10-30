@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import LoginForm from './components/LoginForm'
 import Home from './components/Home'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -18,7 +18,8 @@ const App = () => (
         path="/restaurant/:id"
         component={RestaurantDetails}
       />
-      <Route component={NotFound} />
+      <Route path="/not-found" component={NotFound} />
+      <Redirect to="not-found" />
     </Switch>
   </BrowserRouter>
 )

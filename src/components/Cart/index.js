@@ -1,11 +1,7 @@
 import {Component} from 'react'
 
 import {Link} from 'react-router-dom'
-import {
-  BiRupee,
-  AiOutlinePlusSquare,
-  AiOutlineMinusSquare,
-} from 'react-icons/all'
+import {BiRupee} from 'react-icons/all'
 import Header from '../Header'
 import Footer from '../Footer'
 
@@ -23,6 +19,7 @@ class Cart extends Component {
     isSuccess: false,
     classCon: 'display',
     totalCost: 0,
+    // eslint-disable-next-line
     rerender: false,
   }
 
@@ -36,6 +33,7 @@ class Cart extends Component {
       this.setState(pre => ({isEmpty: !pre.isEmpty}))
     }
     const h = Object.entries(localStorage).map(
+      // eslint-disable-next-line
       ([key, valueJSON]) =>
         parseInt(valueJSON.split(',')[2], 10) *
         parseInt(valueJSON.split(',')[0], 10),
@@ -56,11 +54,13 @@ class Cart extends Component {
 
   setMinus = (m, k) => {
     const d = Object.entries(localStorage).filter(
+      // eslint-disable-next-line
       ([key, valueJSON]) => key === m,
     )
     const hy = parseInt(k, 10) - 1
     if (hy === 0) {
       localStorage.removeItem(`${m}`)
+      // eslint-disable-next-line
       this.setState({rerender: true})
     } else {
       localStorage.setItem(
@@ -69,9 +69,11 @@ class Cart extends Component {
           d[0][1].split(',')[2]
         }`,
       )
+      // eslint-disable-next-line
       this.setState({rerender: true})
     }
     const h = Object.entries(localStorage).map(
+      // eslint-disable-next-line
       ([key, valueJSON]) =>
         parseInt(valueJSON.split(',')[2], 10) *
         parseInt(valueJSON.split(',')[0], 10),
@@ -82,6 +84,7 @@ class Cart extends Component {
 
   setPlus = (m, k) => {
     const d = Object.entries(localStorage).filter(
+      // eslint-disable-next-line
       ([key, valueJSON]) => key === m,
     )
     localStorage.setItem(
@@ -90,8 +93,10 @@ class Cart extends Component {
         d[0][1].split(',')[2]
       }`,
     )
+    // eslint-disable-next-line
     this.setState({rerender: true})
     const h = Object.entries(localStorage).map(
+      // eslint-disable-next-line
       ([key, valueJSON]) =>
         parseInt(valueJSON.split(',')[2], 10) *
         parseInt(valueJSON.split(',')[0], 10),
@@ -102,7 +107,7 @@ class Cart extends Component {
 
   getTheUpdatedMenu = () =>
     Object.entries(localStorage).map(([key, valueJSON]) => (
-      <li className="cart" key={key}>
+      <li className="cart" key={key} testid="cartItem">
         <div className="main-cart-container">
           <img
             src={valueJSON.split(',')[1]}
@@ -113,20 +118,31 @@ class Cart extends Component {
             <p className="item-name">{key}</p>
           </div>
         </div>
-
         <div className="final-quantity">
           <div className="mobile-two">
             <p className="item-name">{key}</p>
           </div>
           <div className="quantity">
-            <AiOutlineMinusSquare
+            <button
+              type="button"
               onClick={() => this.setMinus(key, valueJSON.split(',')[0])}
-            />
-            <p className="quantity-two">{valueJSON.split(',')[0]}</p>
-            <AiOutlinePlusSquare
+              className="minus"
+              textid="decrement-quantity"
+            >
+              -
+            </button>
+
+            <p className="quantity-two" testid="item-quantity">
+              {valueJSON.split(',')[0]}
+            </p>
+            <button
+              type="button"
               onClick={() => this.setPlus(key, valueJSON.split(',')[0])}
-              id={key}
-            />
+              className="minus"
+              testid="increment-quantity"
+            >
+              +
+            </button>
           </div>
           <div className="price">
             <p className="price-mob">
@@ -167,7 +183,7 @@ class Cart extends Component {
             <>
               <Header />
               <div className="cart-empty-container">
-                <img src={empty} alt="empty-cart" className="image-small" />
+                <img src={empty} alt="empty cart" className="image-small" />
                 <h1 className="no-order">No Orders Yet!</h1>
                 <p className="no-order-para">
                   Your cart is empty. Add something from the menu.
@@ -197,7 +213,7 @@ class Cart extends Component {
                     <p className="order-total">Order Total: </p>
                     <div className="cash">
                       <BiRupee />
-                      <p>{totalCost}</p>
+                      <p testid="total-price">{totalCost}</p>
                     </div>
                   </div>
                   <button
